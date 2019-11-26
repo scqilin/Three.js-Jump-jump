@@ -1,22 +1,18 @@
-
 import * as THREE from "three"
-console.log('index');
+
 class Threescene {
-    scene: THREE.Scene
-    camera: THREE.PerspectiveCamera
-    renderer: THREE.WebGLRenderer
-    controls: any
-    clock: THREE.Clock = new THREE.Clock()
+    private scene: THREE.Scene
+    private camera: THREE.PerspectiveCamera
+    private renderer: THREE.WebGLRenderer
     constructor() {
         this.scene = new THREE.Scene()
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000)
         this.renderer = new THREE.WebGLRenderer()
-        // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.init()
         window.addEventListener('resize', this.onWindowResize, false)
     }
-   
-  
+
+
     private init() {
         this.camera.position.set(-40, 40, 40)
         this.camera.lookAt(this.scene.position)
@@ -37,10 +33,8 @@ class Threescene {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
     }
     private render() {
-        let delta = this.clock.getDelta()
-        this.renderer.render(this.scene, this.camera)
-        this.controls.update(delta);
-       
+        this.renderer.render(this.scene, this.camera);
+
     }
     private animate = () => {
         requestAnimationFrame(this.animate)
@@ -48,3 +42,4 @@ class Threescene {
     }
 }
 
+let scene = new Threescene();
