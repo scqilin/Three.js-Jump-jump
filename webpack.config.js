@@ -4,7 +4,7 @@ const HtmlWebpalckPlugin = require('html-webpack-plugin')
 module.exports = {
     entry:{
     'index':'./src/index.ts',
-    'main':'./src/main.ts'     
+    // 'main':'./src/main.ts'  //多入口配置方法   
     },
     output:{
         path:path.resolve(__dirname,'public'),
@@ -22,10 +22,10 @@ module.exports = {
             filename: 'index.html',
             template:'./src/index.html'            
         }),
-        new HtmlWebpalckPlugin({
-            filename: 'main.html',
-            'chunks':['main']           
-        })
+        // new HtmlWebpalckPlugin({ //多入口配置方法  
+        //     filename: 'main.html',
+        //     'chunks':['main']           
+        // })
     ],    
     module:{
         rules:[
